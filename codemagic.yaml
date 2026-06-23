@@ -33,8 +33,14 @@ workflows:
             -configuration Release \
             -archivePath "$CM_BUILD_DIR/build/DanmakuPiP.xcarchive" \
             CODE_SIGN_STYLE=Automatic \
-            DEVELOPMENT_TEAM=$FCI_DEVELOPMENT_TEAM \
+            -allowProvisioningUpdates \
             archive 2>&1
+          
+          echo "--- Exporting IPA ---"
+          xcodebuild -exportArchive \
+            -archivePath "$CM_BUILD_DIR/build/DanmakuPiP.xcarchive" \
+            -exportOptionsPlist "$CM_BUILD_DIR/export_options.plist" \
+            -exportPath "$CM_BUILD_DIR/build" 2>&1
     artifacts:
       - build/*.ipa
       - build/*.dSYM.zip
