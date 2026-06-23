@@ -1,0 +1,25 @@
+name: DanmakuPiP
+options:
+  bundleIdPrefix: com.danmakupip
+  deploymentTarget:
+    iOS: "15.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+
+targets:
+  DanmakuPiP:
+    type: application
+    platform: iOS
+    sources:
+      - path: DanmakuPiP/Sources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.danmakupip.app
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+    info:
+      path: DanmakuPiP/Resources/Info.plist
+    entitlements:
+      path: DanmakuPiP/Resources/DanmakuPiP.entitlements
